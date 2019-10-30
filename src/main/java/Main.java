@@ -13,7 +13,7 @@ public class Main {
             System.exit(-1);
         }
 
-        
+
         //"Hello World! QQQQQQQQ"
         Job job = Job.getInstance();
         job.setJarByClass(Main.class);
