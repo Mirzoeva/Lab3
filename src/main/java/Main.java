@@ -12,9 +12,8 @@ public class Main {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
-        FlightData flightData = new FlightData()
         JavaRDD<String[]> flightsLinesParsed = flightsLines
-                .map(new FlightData flight = FlightData)
+                .map(ParserUtils::splitAll)
                 .filter(cols -> isNotColumnName(cols, FLIGHT_DEST_AIRPORT_INDEX, FLIGHT_DEST_AIRPORT_COLUMN_NAME));
 
     }
