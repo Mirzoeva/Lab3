@@ -39,7 +39,7 @@ public class Main {
         JavaRDD<String[]> airportsLineParsed = airportsLines.map(ParserUtils::splitCommas);
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed.mapToPair(cols -> new Tuple2<>(cols[ID_ROW_FOR_AIRPORTS], cols[NAME_AIRPORT_ROW]));
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
-        final Broadcast<Map<String,String> > 
+//        final Broadcast<Map<String,String> >
 
     }
 
