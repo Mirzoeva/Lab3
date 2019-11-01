@@ -28,11 +28,11 @@ public class Main {
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll);
 //                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME))
-        JavaPairRDD<Tuple2<String, String>, FlightStatsValue> flightStatPairs = flightsLinesParsed
+        JavaPairRDD<Tuple2<String, String>, FlightStatus> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
                                 new Tuple2<>(cols[FLIGHT_ORIGIN_AIRPORT_INDEX], cols[ID_ROW_FOR_FLIGHT]),
-                                new FlightStatsValue(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
+                                new FlightStatus(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
 
