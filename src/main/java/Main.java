@@ -22,8 +22,7 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
-        JavaRDD<String[]> flightsLinesParsed = flightsLines
-                .map(ParserUtils::splitAll);
+        JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll);
         JavaPairRDD<Tuple2<String, String>, FlightStatus> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
@@ -34,8 +33,9 @@ public class Main {
         JavaPairRDD<Tuple2<String, String>, FlightStatus> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightStatus::add);
 
-        
-
+        JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
+        JavaRDD<String[]> airportsLineParsed = airportsLines.map(ParserUtils::splitCommas);
+        JavaPairRDD<String, String> airportsPeirs = airportsLineParsed.mapToPair(cols -> new Tuple2<>(cols[ID_ROW_FOR_AIRPORTS], cols[NAME_AIRPORT_ROW]));
 
     }
 
