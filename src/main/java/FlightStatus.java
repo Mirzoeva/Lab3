@@ -23,7 +23,7 @@ public class FlightStatus implements Serializable{
         return flights;
     }
 
-    public FlightStatus
+    public FlightStatus()
 
 
 
