@@ -1,3 +1,6 @@
-public class FlightStatus {
+
+
+public class FlightStatus implements Serializable{
+
 }
 
