@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
-
+        JavaRDD<String> flightsLines = sc.textFile(FLIGHT_INPUT_FILE);
 
 
         Job job = Job.getInstance();
