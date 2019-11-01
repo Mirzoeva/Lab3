@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
+
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll);
@@ -32,6 +33,7 @@ public class Main {
                 );
         JavaPairRDD<Tuple2<String, String>, FlightStatus> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightStatus::add);
+
         
 
 
