@@ -35,7 +35,9 @@ public class FlightStatus implements Serializable{
         this.flights = 1;
     }
 
-    public 
+    static FlightStatus add(){
+        
+    }
 
 
 
