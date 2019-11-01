@@ -1,4 +1,3 @@
-package lab2;
 
 import org.apache.hadoop.io.Text;
 

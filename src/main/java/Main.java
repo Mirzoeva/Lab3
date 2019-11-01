@@ -10,6 +10,8 @@ public class Main {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
+
+
         Job job = Job.getInstance();
         job.setJarByClass(Main.class);
         job.setJobName("Main sort");

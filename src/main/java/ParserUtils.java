@@ -1,4 +1,3 @@
-package lab2;
 
 public class ParserUtils {
     public static String[] splitAll(String str){
