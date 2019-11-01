@@ -5,7 +5,10 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
+
+import java.util.Map;
 
 
 public class Main {
@@ -15,7 +18,6 @@ public class Main {
     private static final int ID_ROW_FOR_AIRPORTS = 0;
     private static final int NAME_AIRPORT_ROW = 1;
     private static final int FLIGHT_CANCELLED_INDEX = 19;
-    private static final String FLIGHT_DEST_AIRPORT_COLUMN_NAME = "DEST_AIRPORT_ID";
 
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName("lab3");
@@ -36,6 +38,8 @@ public class Main {
         JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
         JavaRDD<String[]> airportsLineParsed = airportsLines.map(ParserUtils::splitCommas);
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed.mapToPair(cols -> new Tuple2<>(cols[ID_ROW_FOR_AIRPORTS], cols[NAME_AIRPORT_ROW]));
+        Map<String, String> airportsMap = airportsPeirs.collectAsMap();
+        final Broadcast<Map<String,String> > 
 
     }
 
