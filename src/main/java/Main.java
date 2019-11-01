@@ -10,6 +10,7 @@ import scala.Tuple2;
 
 public class Main {
     private static final int ID_ROW_FOR_FLIGHT = 14;
+    private static final int FLIGHT_ORIGIN_AIRPORT_INDEX = 11;
     private static final int DELAY_ROW = 18;
     private static final int ID_ROW_FOR_AIRPORTS = 0;
     private static final int NAME_AIRPORT_ROW = 1;
