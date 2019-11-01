@@ -24,7 +24,10 @@ public class FlightStatus implements Serializable{
     }
 
     public FlightStatus(String delay, String cancelled){
-        
+        if (delay.equals("")) {
+            this.maxDelay = 0.f;
+            this.delayedFlights = 0;
+        }
     }
 
 
