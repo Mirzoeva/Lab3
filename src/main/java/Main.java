@@ -35,6 +35,9 @@ public class Main {
                                 new FlightStatus(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
+        JavaPairRDD<Tuple2<String, String>, FlightStatus> flightsStatPairsSummarized = flightStatPairs
+                .reduceByKey(FlightStatus::add);
+
 
     }
 
