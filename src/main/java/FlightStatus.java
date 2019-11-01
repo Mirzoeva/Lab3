@@ -38,6 +38,9 @@ public class FlightStatus implements Serializable{
     static FlightStatus add(FlightStatus a, FlightStatus b){
         return new FlightStatus(
                 Math.max(a.getMaxDelay(), b.getMaxDelay()),
+                a.getDelayedFlights() + b.delayedFlights,
+                a.getCancelledFlights() + b.getCancelledFlights(),
+                a.getFlights() + b.getFlights();
     }
 
 
