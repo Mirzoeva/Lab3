@@ -23,7 +23,9 @@ public class FlightStatus implements Serializable{
         return flights;
     }
 
-    public FlightStatus()
+    public FlightStatus(String delay, String cancelled){
+        
+    }
 
 
 
