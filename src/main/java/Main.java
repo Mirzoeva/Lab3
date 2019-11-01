@@ -14,6 +14,7 @@ public class Main {
     private static final int DELAY_ROW = 18;
     private static final int ID_ROW_FOR_AIRPORTS = 0;
     private static final int NAME_AIRPORT_ROW = 1;
+    private static final int FLIGHT_CANCELLED_INDEX = 19;
     private static final String FLIGHT_DEST_AIRPORT_COLUMN_NAME = "DEST_AIRPORT_ID";
 
     private static boolean isNotColumnName(String[] cols, int columnIndex, String columnName) {
@@ -34,6 +35,7 @@ public class Main {
                                 new FlightStatsValue(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
+        
     }
 
 }
