@@ -10,6 +10,7 @@ import org.apache.spark.api.java.JavaRDD;
 public class Main {
     private static final int ID_ROW = 14;
     private static final int DELAY_ROW = 18;
+    private static final String FLIGHT_DEST_AIRPORT_COLUMN_NAME = "DEST_AIRPORT_ID";
 
     private static boolean isNotColumnName(String[] cols, int columnIndex, String columnName) {
         return !cols[columnIndex].equals(columnName);
