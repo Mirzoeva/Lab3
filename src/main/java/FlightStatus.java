@@ -11,7 +11,9 @@ public class FlightStatus implements Serializable{
         return maxDelay;
     }
 
-    
+    public int getDelayedFlights() {
+        return delayedFlights;
+    }
 
 
 
