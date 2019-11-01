@@ -30,7 +30,7 @@ public class Main {
         JavaPairRDD<Tuple2<String, String>, FlightStatsValue> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
-                                new Tuple2<>(cols[FLIGHT_ORIGIN_AIRPORT_INDEX], cols[FLIGHT_DEST_AIRPORT_INDEX]),
+                                new Tuple2<>(cols[FLIGHT_ORIGIN_AIRPORT_INDEX], cols[ID_ROW_FOR_FLIGHT]),
                                 new FlightStatsValue(cols[FLIGHT_DELAY_INDEX], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
