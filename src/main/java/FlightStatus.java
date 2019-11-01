@@ -40,7 +40,8 @@ public class FlightStatus implements Serializable{
                 Math.max(a.getMaxDelay(), b.getMaxDelay()),
                 a.getDelayedFlights() + b.delayedFlights,
                 a.getCancelledFlights() + b.getCancelledFlights(),
-                a.getFlights() + b.getFlights();
+                a.getFlights() + b.getFlights()
+        );
     }
 
 
