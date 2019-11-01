@@ -15,6 +15,10 @@ public class FlightStatus implements Serializable{
         return delayedFlights;
     }
 
+    public int getCancelledFlights() {
+        return cancelledFlights;
+    }
+
 
 
 }
