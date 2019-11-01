@@ -17,18 +17,17 @@ public class Main {
     private static final int FLIGHT_CANCELLED_INDEX = 19;
     private static final String FLIGHT_DEST_AIRPORT_COLUMN_NAME = "DEST_AIRPORT_ID";
 
-    private static boolean isNotColumnName(String[] cols, int columnIndex, String columnName) {
-        return !cols[columnIndex].equals(columnName);
-    }
+//    private static boolean isNotColumnName(String[] cols, int columnIndex, String columnName) {
+//        return !cols[columnIndex].equals(columnName);
+//    }
 
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaRDD<String[]> flightsLinesParsed = flightsLines
-                .map(ParserUtils::splitAll)
-//                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME)
-                 );
+                .map(ParserUtils::splitAll);
+//                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME))
         JavaPairRDD<Tuple2<String, String>, FlightStatsValue> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
