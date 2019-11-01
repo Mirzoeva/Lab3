@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc34a1f1-985a-406d-9e0c-078171e78c05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/FlightStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FlightStatus.java" afterDir="false" />
-    </list>
+    <list default="true" id="cc34a1f1-985a-406d-9e0c-078171e78c05" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/FlightStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+            <state relative-caret-position="45">
+              <caret line="3" column="49" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="49" />
               <folding>
                 <element signature="e#233#234#0" expanded="true" />
                 <element signature="e#264#265#0" expanded="true" />
@@ -123,7 +121,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572638524654" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572638805970" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -150,12 +148,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572459673825</updated>
-      <workItem from="1572459675065" duration="7016000" />
+      <workItem from="1572459675065" duration="7513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7016000" />
+    <option name="totallyTimeSpent" value="7513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="714" height="900" extended-state="0" />
@@ -230,8 +228,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FlightStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+        <state relative-caret-position="45">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="49" />
           <folding>
             <element signature="e#233#234#0" expanded="true" />
             <element signature="e#264#265#0" expanded="true" />
