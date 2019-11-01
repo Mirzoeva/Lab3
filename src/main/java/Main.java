@@ -31,7 +31,7 @@ public class Main {
                 .mapToPair(
                         cols -> new Tuple2<>(
                                 new Tuple2<>(cols[FLIGHT_ORIGIN_AIRPORT_INDEX], cols[ID_ROW_FOR_FLIGHT]),
-                                new FlightStatsValue(cols[FLIGHT_DELAY_INDEX], cols[FLIGHT_CANCELLED_INDEX])
+                                new FlightStatsValue(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
     }
