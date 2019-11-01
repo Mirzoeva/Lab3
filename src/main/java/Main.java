@@ -8,7 +8,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        
+        SparkConf conf = new SparkConf().setAppName("lab3");
+        JavaSparkContext sc = new JavaSparkContext(conf);
 
 
 
