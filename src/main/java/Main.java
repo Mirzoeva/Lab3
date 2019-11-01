@@ -12,14 +12,7 @@ public class Main {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
-        
 
 
-        Job job = Job.getInstance();
-        job.setJarByClass(Main.class);
-        job.setJobName("Main sort");
-        FileOutputFormat.setOutputPath(job, new Path(args[2]));
-        job.setNumReduceTasks(2);
-        System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
