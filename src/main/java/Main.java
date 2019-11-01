@@ -26,4 +26,5 @@ public class Main {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME));
     }
+    
 }
