@@ -27,7 +27,8 @@ public class Main {
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME));
+//                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME)
+                 );
         JavaPairRDD<Tuple2<String, String>, FlightStatsValue> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
@@ -35,7 +36,7 @@ public class Main {
                                 new FlightStatsValue(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
-        
+
     }
 
 }
