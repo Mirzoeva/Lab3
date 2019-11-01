@@ -24,15 +24,10 @@ public class FlightStatus implements Serializable{
     }
 
     public FlightStatus(float maxDelay, int delayedFlights, int cancelledFlights, int flights){
-        if (delay.equals("")) {
-            this.maxDelay = 0.f;
-            this.delayedFlights = 0;
-        }else {
-            this.maxDelay = Float.parseFloat(delay);
-            this.delayedFlights = (maxDelay > 0 ? 1 : 0);
-        }
-        this.cancelledFlights = (Float.parseFloat(cancelled) > 0 ? 1 : 0);
-        this.flights = 1;
+        this.maxDelay = maxDelay;
+        this.delayedFlights = delayedFlights;
+        this.cancelledFlights = cancelledFlights;
+        this.flights = flights;
     }
 
     public FlightStatus(String delay, String cancelled){
