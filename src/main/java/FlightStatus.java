@@ -27,6 +27,9 @@ public class FlightStatus implements Serializable{
         if (delay.equals("")) {
             this.maxDelay = 0.f;
             this.delayedFlights = 0;
+        }else {
+            this.maxDelay = Float.parseFloat(delay);
+            this.delayedFlights = (maxDelay > 0 ? 1 : 0);
         }
     }
 
