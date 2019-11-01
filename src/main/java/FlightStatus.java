@@ -7,6 +7,10 @@ public class FlightStatus implements Serializable{
     private int cancelledFlights;
     private int flights;
 
+    public float getMaxDelay() {
+        return maxDelay;
+    }
+
     
 
 
