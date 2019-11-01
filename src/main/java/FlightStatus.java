@@ -6,6 +6,7 @@ public class FlightStatus implements Serializable{
     private int delayedFlights;
     private int cancelledFlights;
     private int flights;
+
     
 
 
