@@ -8,8 +8,10 @@ import org.apache.spark.api.java.JavaRDD;
 
 
 public class Main {
-    private static final int ID_ROW = 14;
+    private static final int ID_ROW_FOR_FLIGHT = 14;
     private static final int DELAY_ROW = 18;
+    private static final int ID_ROW_FOR_AIRPORTS = 0;
+    private static final int NAME_AIRPORT_ROW = 1;
     private static final String FLIGHT_DEST_AIRPORT_COLUMN_NAME = "DEST_AIRPORT_ID";
 
     private static boolean isNotColumnName(String[] cols, int columnIndex, String columnName) {
@@ -22,7 +24,6 @@ public class Main {
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isNotColumnName(cols, ID_ROW, FLIGHT_DEST_AIRPORT_COLUMN_NAME));
-
+                .filter(cols -> isNotColumnName(cols, ID_ROW_FOR_FLIGHT, FLIGHT_DEST_AIRPORT_COLUMN_NAME));
     }
 }
