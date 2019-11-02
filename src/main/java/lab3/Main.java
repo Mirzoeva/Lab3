@@ -20,7 +20,7 @@ public class Main {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample");
         JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll);
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
@@ -30,7 +30,7 @@ public class Main {
                         )
                 );
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs.reduceByKey(FlightData::add);
-        JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
+        JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID");
         JavaRDD<String[]> airportsLineParsed = airportsLines.map(ParserUtils::splitCommas);
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed.mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]));
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
