@@ -50,7 +50,7 @@ public class FlightData implements Serializable{
                 a.getFlights() + b.getFlights()
         );
     }
-    
+
     @Override
     public String toString(){
         return maxDelay + "," + (float) delayedFlights/flights *100f + "%, " +
