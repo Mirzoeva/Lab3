@@ -31,7 +31,7 @@ public class Main {
                                 new FlightData(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])
                         )
                 );
-        /*kek1234565687700*/
+        /*kek123456568770056555*/
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs.reduceByKey(FlightData::add);
         JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID");
         JavaRDD<String[]> airportsLineParsed = airportsLines.map(ParserUtils::splitCommas);
