@@ -16,12 +16,16 @@ public class Main {
     private static final int NAME_AIRPORT_ROW = 1;
     private static final int FLIGHT_CANCELLED_INDEX = 19;
 
+    private static boolean isColumnName(String[] cols, int colIndex, String colName){
+        return !cols[colIndex].equals(colName);
+    }
+
     public static void main(String[] args) throws Exception {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample");
-        JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll);
+        JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll, cols -> isColumnName(cols, FLIGHT_ID_ROW, ));
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
