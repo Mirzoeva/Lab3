@@ -60,7 +60,10 @@ public class Main {
         System.out.println("\n");
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
-                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]));
+                .mapToPair(cols -> {
+                    System.out.println(cols);
+                    return new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]);
+                });
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
 //        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsMap);
 //        JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
