@@ -43,7 +43,7 @@ public class Main {
                 pair -> airportsBroadcast.value().get(pair._1._1) + ", "
                         + airportsBroadcast.value().get(pair._1._2) + ", "
                         + pair._2.toString());
-        statusLines.saveAsTextFile(args[0]);
+        statusLines.saveAsTextFile("output");
     }
 
 }
