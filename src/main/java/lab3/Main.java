@@ -61,7 +61,7 @@ public class Main {
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
                 .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]));
-//        Map<String, String> airportsMap = airportsPeirs.collectAsMap();
+        Map<String, String> airportsMap = airportsPeirs.collectAsMap();
 //        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsMap);
 //        JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
 //                pair -> airportsBroadcast.value().get(pair._1._1) + ", "
