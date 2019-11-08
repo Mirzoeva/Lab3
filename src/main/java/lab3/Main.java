@@ -25,7 +25,7 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample");
-        JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll, cols -> isColumnName(cols, FLIGHT_ID_ROW, "DEST_AIRPORT_ID"));
+        JavaRDD<String[]> flightsLinesParsed = flightsLines.map(ParserUtils::splitAll).filter(cols -> isColumnName(cols, FLIGHT_ID_ROW, "DEST_AIRPORT_ID"));
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
