@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setAppName("lab3");
+        SparkConf conf = new SparkConf();
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile(FLIGHTS_FILE_PATH);
