@@ -15,6 +15,8 @@ public class Main {
     private static final int AIRPORTS_ID_ROW = 0;
     private static final int NAME_AIRPORT_ROW = 1;
     private static final int FLIGHT_CANCELLED_INDEX = 19;
+    private static final String FLIGHTS_FILE_PATH = "664600583_T_ONTIME_sample.csv";
+    private static final String AIRPORTS_FILE_PATH = "L_AIRPORT_ID.csv";
 
     private static boolean isColumnName(String[] cols, int colIndex, String colName){
         return !cols[colIndex].equals(colName);
@@ -24,7 +26,7 @@ public class Main {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> flightsLines = sc.textFile(FLIGHTS_FILE_PATH);
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines.
                 map(ParserUtils::splitAll).
@@ -41,7 +43,7 @@ public class Main {
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightData::addFlightData);
 
-        JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
+        JavaRDD<String> airportsLines = sc.textFile(AIRPORTS_FILE_PATH);
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
