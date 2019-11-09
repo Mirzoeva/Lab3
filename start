@@ -1,2 +1,3 @@
 mvn package
 spark-submit --class lab3.Main --master yarn-client --num-executors 3 /Users/umamirzoeva/Parallel/Lab3/target/spark-examples-1.0-SNAPSHOT.jar
+hadoop fs -copyToLocal output
