@@ -12,12 +12,15 @@ public class Main {
     private static final String AIRPORTS_FILE_PATH = "L_AIRPORT_ID.csv";
     private static final int AIRPORTS_AIRPORTS_ID = 0;
     private static final int AIRPORTS_AIRPORT_NAME = 1;
+    private static final String Code = "Code";
 
     private static final String FLIGHTS_FILE_PATH = "664600583_T_ONTIME_sample.csv";
     private static final int FLIGHT_AIRPORT_INDEX = 11;
     private static final int FLIGHT_ID = 14;
     private static final int DELAY_ROW = 18;
     private static final int FLIGHT_CANCELLED_INDEX = 19;
+    private static final String DEST_AIRPORT_ID = "DEST_AIRPORT_ID";
+
 
     private static boolean isColumnName(String[] cols, int colIndex, String colName){
         return !cols[colIndex].equals(colName);
@@ -31,7 +34,7 @@ public class Main {
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isColumnName(cols, FLIGHT_ID, "DEST_AIRPORT_ID"));
+                .filter(cols -> isColumnName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
@@ -48,7 +51,7 @@ public class Main {
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, "Code"));
+                .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
                 .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_AIRPORTS_ID], cols[AIRPORTS_AIRPORT_NAME]));
