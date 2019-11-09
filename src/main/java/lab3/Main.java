@@ -11,7 +11,6 @@ import java.util.Map;
 public class Main {
     private static final String AIRPORTS_FILE_PATH = "L_AIRPORT_ID.csv";
     private static final int AIRPORTS_AIRPORTS_ID = 0;
-    private static final int AIRPORTS_AIRPORT_NAME = 1;
     private static final String Code = "Code";
 
     private static final String FLIGHTS_FILE_PATH = "664600583_T_ONTIME_sample.csv";
@@ -53,11 +52,14 @@ public class Main {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
-        Map<String, String> airportsPeirs = airportsLineParsed
-                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_AIRPORTS_ID], cols[AIRPORTS_AIRPORT_NAME]))
+        Map<String, String> airportsPairs = airportsLineParsed
+                .mapToPair(cols -> {
+                    AirportsInfo airportInfo = new AirportsInfo(cols);
+                    return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
+                })
                 .collectAsMap();
 
-        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsPeirs);
+        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsPairs);
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
                 pair -> airportsBroadcast.value().get(pair._1._1) + ", "
