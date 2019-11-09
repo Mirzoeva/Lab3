@@ -40,10 +40,10 @@ public class Main {
 
         JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
-                        cols -> { ParserDelays flightData = new ParserDelays(cols);
+                        cols -> { FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
                                 new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-                                new FlightData(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])); }
+                                new FlightData(flightData.getDelayTime(), cols[FLIGHT_CANCELLED_INDEX])); }
                 );
 
         JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs

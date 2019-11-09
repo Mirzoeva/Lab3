@@ -2,13 +2,14 @@ package lab3;
 
 import org.apache.hadoop.io.Text;
 
-public class ParserDelays {
+public class FlightInfo {
     private String[] mainString;
     private static final int ID_ROW = 14;
     private static final int DELAY_ROW = 18;
     private static final int FLIGHT_AIRPORT_INDEX = 11;
+    private static final int FLIGHT_CANCELLED_INDEX = 19;
 
-    public ParserDelays(String[] str){
+    public FlightInfo(String[] str){
         mainString = str;
     }
 
@@ -17,7 +18,7 @@ public class ParserDelays {
         return mainString[ID_ROW];
     }
 
-    public String getValue(){
+    public String getDelayTime(){
         return mainString[DELAY_ROW];
     }
 
@@ -25,5 +26,8 @@ public class ParserDelays {
         return mainString[FLIGHT_AIRPORT_INDEX];
     }
 
+    public String getCancelledIndex(){
+        return mainString[FLIGHT_CANCELLED_INDEX];
+    }
 
 }
