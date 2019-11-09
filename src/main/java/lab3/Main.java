@@ -15,10 +15,7 @@ public class Main {
     private static final String Code = "Code";
 
     private static final String FLIGHTS_FILE_PATH = "664600583_T_ONTIME_sample.csv";
-    private static final int FLIGHT_AIRPORT_INDEX = 11;
     private static final int FLIGHT_ID = 14;
-    private static final int DELAY_ROW = 18;
-    private static final int FLIGHT_CANCELLED_INDEX = 19;
     private static final String DEST_AIRPORT_ID = "DEST_AIRPORT_ID";
 
 
@@ -40,10 +37,12 @@ public class Main {
 
         JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
-                        cols -> { FlightInfo flightData = new FlightInfo(cols);
+                        cols -> {
+                            FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
                                 new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-                                new FlightData(flightData.getDelayTime(),flightData.getCancelledIndex())); }
+                                new FlightData(flightData.getDelayTime(),flightData.getCancelledIndex()));
+                        }
                 );
 
         JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
