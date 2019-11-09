@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc34a1f1-985a-406d-9e0c-078171e78c05" name="Default Changelist" comment="" />
+    <list default="true" id="cc34a1f1-985a-406d-9e0c-078171e78c05" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/lab3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lab3/Main.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/lab3/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+            <state relative-caret-position="169">
+              <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +99,8 @@
         <option value="$PROJECT_DIR$/src/main/java/FlightStatus.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/lab3/FlightData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/lab3/Main.java" />
         <option value="$PROJECT_DIR$/start" />
+        <option value="$PROJECT_DIR$/src/main/java/lab3/Main.java" />
       </list>
     </option>
   </component>
@@ -164,7 +166,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573260008361" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573260115313" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -193,15 +195,16 @@
       <updated>1572459673825</updated>
       <workItem from="1572459675065" duration="13144000" />
       <workItem from="1572726550341" duration="463000" />
-      <workItem from="1573241456008" duration="10712000" />
+      <workItem from="1573241456008" duration="10844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24319000" />
+    <option name="totallyTimeSpent" value="24451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="920" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24373576" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -294,8 +297,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lab3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+        <state relative-caret-position="169">
+          <caret line="22" column="42" lean-forward="true" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
