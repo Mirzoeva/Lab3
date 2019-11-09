@@ -30,8 +30,8 @@ public class Main {
         JavaRDD<String> flightsLines = sc.textFile(FLIGHTS_FILE_PATH);
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines
-                .map(ParserUtils::splitAll).
-                filter(cols -> isColumnName(cols, FLIGHT_ID, "DEST_AIRPORT_ID"));
+                .map(ParserUtils::splitAll)
+                .filter(cols -> isColumnName(cols, FLIGHT_ID, "DEST_AIRPORT_ID"));
 
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
