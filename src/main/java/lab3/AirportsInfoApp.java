@@ -34,17 +34,26 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
-        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
+//        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
+//                .mapToPair(
+//                        cols -> {
+//                            FlightInfo flightData = new FlightInfo(cols);
+//                            return new Tuple2<>(
+//                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
+//                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
+//                        }
+//                );
+
+        JavaPairRDD<String, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> {
                             FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
-                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
+                                    flightData.getAirportID(),
+                                    new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
                         }
                 );
-
-        JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
+        JavaPairRDD<String, FlightData> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightData::addFlightData);
 
 
@@ -52,6 +61,12 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
+//        Map<String, String> stringAirportDataMap = airportsLineParsed
+//                .mapToPair(cols -> {
+//                    AirportsInfo airportInfo = new AirportsInfo(cols);
+//                    return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
+//                })
+//                .collectAsMap();
         Map<String, String> stringAirportDataMap = airportsLineParsed
                 .mapToPair(cols -> {
                     AirportsInfo airportInfo = new AirportsInfo(cols);
@@ -60,12 +75,13 @@ public class AirportsInfoApp {
                 .collectAsMap();
 
 
+
         final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(stringAirportDataMap);
 
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
-                pair -> airportsBroadcast.value().get(pair._1._1) + ", "
-                        + airportsBroadcast.value().get(pair._1._2) + ", "
+                pair -> airportsBroadcast.value().get(pair._1) + ", "
+                        + airportsBroadcast.value().get(pair._2) + ", "
                         + pair._2.toString());
 
         statusLines.saveAsTextFile("output");
