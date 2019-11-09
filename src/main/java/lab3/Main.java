@@ -53,5 +53,4 @@ public class Main {
                         + pair._2.toString());
         statusLines.saveAsTextFile("output");
     }
-
 }
