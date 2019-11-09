@@ -25,9 +25,11 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile("664600583_T_ONTIME_sample.csv");
+
         JavaRDD<String[]> flightsLinesParsed = flightsLines.
                 map(ParserUtils::splitAll).
                 filter(cols -> isColumnName(cols, FLIGHT_ID_ROW, "DEST_AIRPORT_ID"));
+
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
@@ -39,18 +41,23 @@ public class Main {
                 .reduceByKey(FlightData::add);
 
         JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
+
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isColumnName(cols, AIRPORTS_ID_ROW, "Code"));
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
                 .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]));
+
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
+
         final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsMap);
+
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
                 pair -> airportsBroadcast.value().get(pair._1._1) + ", "
                         + airportsBroadcast.value().get(pair._1._2) + ", "
                         + pair._2.toString());
+
         statusLines.saveAsTextFile("output");
     }
 }
