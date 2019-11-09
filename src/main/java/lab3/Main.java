@@ -42,9 +42,8 @@ public class Main {
                 .mapToPair(
                         cols -> { ParserDelays flightData = new ParserDelays(cols);
                             return new Tuple2<>(
-                                new Tuple2<>(cols[FLIGHT_AIRPORT_INDEX], cols[FLIGHT_ID]),
-                                new FlightData(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX]); }
-                        )
+                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
+                                new FlightData(cols[DELAY_ROW], cols[FLIGHT_CANCELLED_INDEX])); }
                 );
 
         JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
