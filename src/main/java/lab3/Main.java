@@ -35,8 +35,8 @@ public class Main {
 
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines
-                .map(ParserUtils::splitAll);
-//                .filter(cols -> isColumnName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
+                .map(ParserUtils::splitAll)
+                .filter(cols -> isColumnName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
         JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
@@ -51,8 +51,8 @@ public class Main {
 
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
-                .map(ParserUtils::splitAll);
-//                .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
+                .map(ParserUtils::splitAll)
+                .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
                 .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_AIRPORTS_ID], cols[AIRPORTS_AIRPORT_NAME]));
