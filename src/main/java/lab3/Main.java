@@ -14,8 +14,8 @@ public class Main {
     private static final int AIRPORTS_AIRPORT_NAME = 1;
 
     private static final String FLIGHTS_FILE_PATH = "664600583_T_ONTIME_sample.csv";
-    private static final int FLIGHT_ID = 14;
     private static final int FLIGHT_AIRPORT_INDEX = 11;
+    private static final int FLIGHT_ID = 14;
     private static final int DELAY_ROW = 18;
     private static final int FLIGHT_CANCELLED_INDEX = 19;
 
