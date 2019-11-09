@@ -43,7 +43,7 @@ public class Main {
                         cols -> { FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
                                 new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-                                new FlightData(flightData.getDelayTime(), cols[FLIGHT_CANCELLED_INDEX])); }
+                                new FlightData(flightData.getDelayTime(),flightData.getCancelledIndex())); }
                 );
 
         JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
