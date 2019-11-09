@@ -34,23 +34,23 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
-        JavaPairRDD<String, FlightData> flightStatPairs = flightsLinesParsed
+        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> {
-                            FlightInfo flightInfo = new FlightInfo(cols);
+                            FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
-                                    flightInfo.getAirportID(),
-                                    new FlightData(flightInfo.getDelayTime(),flightInfo.getCancelled()));
+                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
+                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
                         }
                 );
-        JavaPairRDD<String, FlightData> flightsStatPairsSummarized = flightStatPairs
+
+        JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightData::addFlightData);
 
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, AIRPORTS_AIRPORTS_ID, Code));
-
 
         Map<String, String> stringAirportDataMap = airportsLineParsed
                 .mapToPair(cols -> {
@@ -60,13 +60,13 @@ public class AirportsInfoApp {
                 .collectAsMap();
 
 
-
         final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(stringAirportDataMap);
 
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
-                pair -> airportsBroadcast.value().get(pair._1) + ", "
-                        + airportsBroadcast.value().get(pair._2));
+                pair -> airportsBroadcast.value().get(pair._1._1) + ", "
+                        + airportsBroadcast.value().get(pair._1._2) + ", "
+                        + pair._2.toString());
 
         statusLines.saveAsTextFile("output");
     }
