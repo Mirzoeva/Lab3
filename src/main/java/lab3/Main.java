@@ -42,26 +42,22 @@ public class Main {
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isColumnName(cols, AIRPORTS_ID_ROW, "Code"));
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-
-        System.out.println(airportsLineParsed);
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-
-        System.out.println("\n");
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
                 .mapToPair(cols -> {
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
                     System.out.println(cols);
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
+                    System.out.println("\n");
                     return new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]);
                 });
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
