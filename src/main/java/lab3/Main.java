@@ -39,7 +39,7 @@ public class Main {
                 );
 
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs
-                .reduceByKey(FlightData::add);
+                .reduceByKey(FlightData::addFlightData);
 
         JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
 

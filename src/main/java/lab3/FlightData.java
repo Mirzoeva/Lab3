@@ -42,12 +42,12 @@ public class FlightData implements Serializable{
         this.flights = 1;
     }
 
-    static FlightData add(FlightData a, FlightData b){
+    static FlightData addFlightData(FlightData airportPair1, FlightData airportPair2){
         return new FlightData(
-                Math.max(a.getMaxDelay(), b.getMaxDelay()),
-                a.getDelayedFlights() + b.delayedFlights,
-                a.getCancelledFlights() + b.getCancelledFlights(),
-                a.getFlights() + b.getFlights()
+                Math.max(airportPair1.getMaxDelay(), airportPair2.getMaxDelay()),
+                airportPair1.getDelayedFlights() + airportPair2.getDelayedFlights(),
+                airportPair1.getCancelledFlights() + airportPair2.getCancelledFlights(),
+                airportPair1.getFlights() + airportPair2.getFlights()
         );
     }
 
