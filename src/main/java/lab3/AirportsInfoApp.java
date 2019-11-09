@@ -8,7 +8,7 @@ import scala.Tuple2;
 
 import java.util.Map;
 
-public class Main {
+public class AirportsInfoApp {
     private static final String AIRPORTS_FILE_PATH = "L_AIRPORT_ID.csv";
     private static final int AIRPORTS_AIRPORTS_ID = 0;
     private static final String Code = "Code";
