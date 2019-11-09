@@ -18,7 +18,7 @@ public class AirportsInfoApp {
     private static final String DEST_AIRPORT_ID = "DEST_AIRPORT_ID";
 
 
-    private static boolean isColumnName(String[] cols, int colIndex, String colName){
+    private static boolean isNotEqualName(String[] cols, int colIndex, String colName){
         return !cols[colIndex].equals(colName);
     }
 
@@ -32,15 +32,15 @@ public class AirportsInfoApp {
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isColumnName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
+                .filter(cols -> isNotEqualName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
         JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> {
                             FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
-                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-                                new FlightData(flightData.getDelayTime(),flightData.getCancelledIndex()));
+                                new Tuple2<>(flightData.getAirport(), flightData.getAirportID()),
+                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
                         }
                 );
 
@@ -50,7 +50,7 @@ public class AirportsInfoApp {
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
-                .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
+                .filter(cols -> isNotEqualName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
         Map<String, String> airportsPairs = airportsLineParsed
                 .mapToPair(cols -> {

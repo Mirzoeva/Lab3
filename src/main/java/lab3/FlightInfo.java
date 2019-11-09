@@ -22,11 +22,11 @@ public class FlightInfo {
         return mainString[DELAY_ROW];
     }
 
-    public String getAirportIndex(){
+    public String getAirport(){
         return mainString[FLIGHT_AIRPORT_INDEX];
     }
 
-    public String getCancelledIndex(){
+    public String getCancelled(){
         return mainString[FLIGHT_CANCELLED_INDEX];
     }
 
