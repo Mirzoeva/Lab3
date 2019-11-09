@@ -1,4 +1,4 @@
 hdfs dfs -rm -r hdfs://localhost:9000/user/umamirzoeva/output
 mvn package
-spark-submit --class lab3.Main --master yarn-client --num-executors 3 /Users/umamirzoeva/Parallel/Lab3/target/spark-examples-1.0-SNAPSHOT.jar output
+spark-submit --class lab3.AirportsInfoApp --master yarn-client --num-executors 3 /Users/umamirzoeva/Parallel/Lab3/target/spark-examples-1.0-SNAPSHOT.jar output
 hadoop fs -copyToLocal output
