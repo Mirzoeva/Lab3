@@ -38,7 +38,7 @@ public class Main {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isColumnName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
-        JavaPairRDD<Tuple2<String, String>, FlightData> flightStatPairs = flightsLinesParsed
+        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> new Tuple2<>(
                                 new Tuple2<>(cols[FLIGHT_AIRPORT_INDEX], cols[FLIGHT_ID]),
@@ -46,7 +46,7 @@ public class Main {
                         )
                 );
 
-        JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs
+        JavaPairRDD<Tuple2, FlightData> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightData::addFlightData);
 
 
