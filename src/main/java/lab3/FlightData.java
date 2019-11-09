@@ -56,7 +56,7 @@ public class FlightData implements Serializable{
         if (delayedFlights == 0){
             return "No Delays and Cancels";
         } else {
-            return maxDelay + ", Delays Percent: " + this.getDelayPercent() + "%, Cancelled Percent: " +
+            return "Max Delay: " + maxDelay + ", Delays Percent: " + this.getDelayPercent() + "%, Cancelled Percent: " +
                  this.getCancelPercent() + "% " + "\n";
         }
     }
