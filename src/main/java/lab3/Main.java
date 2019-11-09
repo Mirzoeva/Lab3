@@ -40,7 +40,7 @@ public class Main {
 
         JavaRDD<String> airportsLines = sc.textFile("L_AIRPORT_ID.csv");
         JavaRDD<String[]> airportsLineParsed = airportsLines
-                .map(ParserUtils::splitAll)
+                .map(ParserUtils::splitCommas)
                 .filter(cols -> isColumnName(cols, AIRPORTS_ID_ROW, "Code"));
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
