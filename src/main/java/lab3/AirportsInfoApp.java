@@ -81,8 +81,7 @@ public class AirportsInfoApp {
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
                 pair -> airportsBroadcast.value().get(pair._1) + ", "
-                        + airportsBroadcast.value().get(pair._2) + ", "
-                        + pair._2.toString());
+                        + airportsBroadcast.value().get(pair._2));
 
         statusLines.saveAsTextFile("output");
     }
