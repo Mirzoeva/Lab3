@@ -47,10 +47,10 @@ public class AirportsInfoApp {
         JavaPairRDD<String, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> {
-                            FlightInfo flightData = new FlightInfo(cols);
+                            FlightInfo flightInfo = new FlightInfo(cols);
                             return new Tuple2<>(
-                                    flightData.getAirportID(),
-                                    new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
+                                    flightInfo.getAirportID(),
+                                    new FlightData(flightInfo.getDelayTime(),flightInfo.getCancelled()));
                         }
                 );
         JavaPairRDD<String, FlightData> flightsStatPairsSummarized = flightStatPairs
