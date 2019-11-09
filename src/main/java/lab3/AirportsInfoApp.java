@@ -39,7 +39,7 @@ public class AirportsInfoApp {
                         cols -> {
                             FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
-                                new Tuple2<>(flightData.getAirport(), flightData.getAirportID()),
+                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
                                 new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
                         }
                 );

@@ -22,7 +22,7 @@ public class FlightInfo {
         return mainString[DELAY_ROW];
     }
 
-    public String getAirport(){
+    public String getAirportIndex(){
         return mainString[FLIGHT_AIRPORT_INDEX];
     }
 
