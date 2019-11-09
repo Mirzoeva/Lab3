@@ -20,7 +20,7 @@ public class Main {
         return !cols[colIndex].equals(colName);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
