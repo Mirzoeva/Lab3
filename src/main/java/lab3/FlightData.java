@@ -54,7 +54,7 @@ public class FlightData implements Serializable{
     @Override
     public String toString(){
         if (delayedFlights == 0){
-            return "No Delays and Cancels";
+            return "No Delays and Cancels\n";
         } else {
             return "Max Delay: " + maxDelay + ", Delays Percent: " + this.getDelayPercent() + "%, Cancelled Percent: " +
                  this.getCancelPercent() + "% " + "\n";
