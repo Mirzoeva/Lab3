@@ -11,7 +11,7 @@ public class AirportsInfo {
         mainString = str;
     }
 
-    public String getAirportID(){
+    public String getAirportFirstID(){
         return mainString[ID_ROW];
     }
 

@@ -39,7 +39,7 @@ public class AirportsInfoApp {
                         cols -> {
                             FlightInfo flightData = new FlightInfo(cols);
                             return new Tuple2<>(
-                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
+                                new Tuple2<>(flightData.getAirportSecondID(), flightData.getAirportID()),
                                 new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
                         }
                 );
@@ -55,7 +55,7 @@ public class AirportsInfoApp {
         Map<String, String> stringAirportDataMap = airportsLineParsed
                 .mapToPair(cols -> {
                     AirportsInfo airportInfo = new AirportsInfo(cols);
-                    return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
+                    return new Tuple2<>(airportInfo.getAirportFirstID(), airportInfo.getAirportName());
                 })
                 .collectAsMap();
 
