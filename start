@@ -3,21 +3,3 @@ mvn package
 spark-submit --class lab3.AirportsInfoApp --master yarn-client --num-executors 3 /Users/umamirzoeva/Parallel/Lab3/target/spark-examples-1.0-SNAPSHOT.jar output
 hadoop fs -copyToLocal output
 
-
-
-//        Map<String, String> stringAirportDataMap = airportsLineParsed
-//                .mapToPair(cols -> {
-//                    AirportsInfo airportInfo = new AirportsInfo(cols);
-//                    return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
-//                })
-//                .collectAsMap();
-
-//        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
-//                .mapToPair(
-//                        cols -> {
-//                            FlightInfo flightData = new FlightInfo(cols);
-//                            return new Tuple2<>(
-//                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-//                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
-//                        }
-//                );
