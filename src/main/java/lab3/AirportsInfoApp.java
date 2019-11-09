@@ -59,7 +59,9 @@ public class AirportsInfoApp {
                 })
                 .collectAsMap();
 
+
         final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsPairs);
+
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
                 pair -> airportsBroadcast.value().get(pair._1._1) + ", "
