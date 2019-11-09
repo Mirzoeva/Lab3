@@ -34,16 +34,6 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, FLIGHT_ID, DEST_AIRPORT_ID));
 
-//        JavaPairRDD<Tuple2, FlightData> flightStatPairs = flightsLinesParsed
-//                .mapToPair(
-//                        cols -> {
-//                            FlightInfo flightData = new FlightInfo(cols);
-//                            return new Tuple2<>(
-//                                new Tuple2<>(flightData.getAirportIndex(), flightData.getAirportID()),
-//                                new FlightData(flightData.getDelayTime(),flightData.getCancelled()));
-//                        }
-//                );
-
         JavaPairRDD<String, FlightData> flightStatPairs = flightsLinesParsed
                 .mapToPair(
                         cols -> {
@@ -61,12 +51,7 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
-//        Map<String, String> stringAirportDataMap = airportsLineParsed
-//                .mapToPair(cols -> {
-//                    AirportsInfo airportInfo = new AirportsInfo(cols);
-//                    return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
-//                })
-//                .collectAsMap();
+
         Map<String, String> stringAirportDataMap = airportsLineParsed
                 .mapToPair(cols -> {
                     AirportsInfo airportInfo = new AirportsInfo(cols);
