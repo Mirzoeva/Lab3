@@ -44,7 +44,7 @@ public class Main {
                 .filter(cols -> isColumnName(cols, AIRPORTS_ID_ROW, "Code"));
 
         JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
-                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]););
+                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_ID_ROW], cols[NAME_AIRPORT_ROW]));
         Map<String, String> airportsMap = airportsPeirs.collectAsMap();
 //        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsMap);
 //        JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
