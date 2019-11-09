@@ -54,12 +54,11 @@ public class Main {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isColumnName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
-        JavaPairRDD<String, String> airportsPeirs = airportsLineParsed
-                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_AIRPORTS_ID], cols[AIRPORTS_AIRPORT_NAME]));
+        Map<String, String> airportsPeirs = airportsLineParsed
+                .mapToPair(cols -> new Tuple2<>(cols[AIRPORTS_AIRPORTS_ID], cols[AIRPORTS_AIRPORT_NAME]))
+                .collectAsMap();
 
-        Map<String, String> airportsMap = airportsPeirs.collectAsMap();
-
-        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsMap);
+        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsPeirs);
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
                 pair -> airportsBroadcast.value().get(pair._1._1) + ", "
