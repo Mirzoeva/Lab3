@@ -7,6 +7,4 @@ public class ParserUtils {
         }
         return split;
     }
-
-    public static String[] splitCommas(String str){ return str.split(","); }
 }
