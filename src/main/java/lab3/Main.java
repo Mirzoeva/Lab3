@@ -31,6 +31,8 @@ public class Main {
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         JavaRDD<String> flightsLines = sc.textFile(FLIGHTS_FILE_PATH);
+        JavaRDD<String> airportsLines = sc.textFile(AIRPORTS_FILE_PATH);
+
 
         JavaRDD<String[]> flightsLinesParsed = flightsLines
                 .map(ParserUtils::splitAll)
@@ -47,7 +49,6 @@ public class Main {
         JavaPairRDD<Tuple2<String, String>, FlightData> flightsStatPairsSummarized = flightStatPairs
                 .reduceByKey(FlightData::addFlightData);
 
-        JavaRDD<String> airportsLines = sc.textFile(AIRPORTS_FILE_PATH);
 
         JavaRDD<String[]> airportsLineParsed = airportsLines
                 .map(ParserUtils::splitAll)
