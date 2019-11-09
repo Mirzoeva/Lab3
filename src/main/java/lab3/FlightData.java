@@ -53,8 +53,12 @@ public class FlightData implements Serializable{
 
     @Override
     public String toString(){
-        return maxDelay + "," + (float) delayedFlights/flights *100f + "%, " +
+        if (delayedFlights == 0){
+            return "No Delays and Cancels";
+        } else {
+            return maxDelay + "," + (float) delayedFlights/flights *100f + "%, " +
                 (float)cancelledFlights/flights*100f + "% " + "\n";
+        }
     }
 
 }
