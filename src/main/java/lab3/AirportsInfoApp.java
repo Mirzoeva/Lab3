@@ -52,7 +52,7 @@ public class AirportsInfoApp {
                 .map(ParserUtils::splitAll)
                 .filter(cols -> isNotEqualName(cols, AIRPORTS_AIRPORTS_ID, Code));
 
-        Map<String, String> airportsPairs = airportsLineParsed
+        Map<String, String> stringAirportDataMap = airportsLineParsed
                 .mapToPair(cols -> {
                     AirportsInfo airportInfo = new AirportsInfo(cols);
                     return new Tuple2<>(airportInfo.getAirportID(), airportInfo.getAirportName());
@@ -60,7 +60,7 @@ public class AirportsInfoApp {
                 .collectAsMap();
 
 
-        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(airportsPairs);
+        final Broadcast<Map<String,String> > airportsBroadcast = sc.broadcast(stringAirportDataMap);
 
 
         JavaRDD<String> statusLines = flightsStatPairsSummarized.map(
